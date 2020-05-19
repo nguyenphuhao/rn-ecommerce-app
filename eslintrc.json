@@ -1,9 +1,0 @@
-{
-  "extends": ["prettier"],
-  "plugins": ["prettier"],
-  "ignorePatterns": ["native-base-theme/**/*.js"],
-  "rules": {
-    "prettier/prettier": ["error"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
-  }
-}

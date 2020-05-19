@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 
 const useHeader = () => {
-  const { goBack, canGoBack } = useNavigation();
+  const { goBack, canGoBack, dispatch } = useNavigation();
 
   const pressBack = useCallback(() => {
     goBack();
@@ -16,11 +16,16 @@ const useHeader = () => {
     console.log('pressCart');
   }, []);
 
+  const pressMenu = useCallback(() => {
+    dispatch(DrawerActions.openDrawer());
+  }, []);
+
   return {
     canGoBack: canGoBack(),
     pressBack,
     pressSearch,
     pressCart,
+    pressMenu,
   };
 };
 
