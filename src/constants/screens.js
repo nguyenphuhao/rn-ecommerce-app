@@ -1,6 +1,6 @@
 export const HomeStackScreen = 'HomeStackScreen';
 export const SplashStackScreen = 'SplashStackScreen';
-export const MainStackScreen = 'MainStackScreen';
+export const MainStackLayout = 'MainStackLayout';
 export const ProductDetailStackScreen = 'ProductDetailStackScreen';
 export const LoginStackScreen = 'LoginStackScreen';
 export const RegistrationStackScreen = 'RegistrationStackScreen';

@@ -1,16 +1,27 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import SplashScreen from './screens/SplashScreen';
-import { SplashStackScreen } from './constants/screens';
+import { HomeScreen } from './screens';
+import HeaderBarContainer from './containers/HeaderBarContainer';
+import { HomeStackScreen } from './constants/screens';
 
 const Stack = createStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName={SplashStackScreen}>
-        <Stack.Screen name={SplashStackScreen} component={SplashScreen} />
+      <Stack.Navigator
+        initialRouteName={HomeStackScreen}
+        screenOptions={{
+          header: (props) => <HeaderBarContainer {...props} />,
+        }}
+      >
+        <Stack.Screen
+          options={{ title: 'Awesome app' }}
+          name={HomeStackScreen}
+          component={HomeScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
