@@ -4,7 +4,6 @@ import { primaryColor } from '../../../constants/styles';
 const styles = StyleSheet.create({
   icon: {
     color: primaryColor,
-    
   },
 });
 

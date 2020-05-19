@@ -7,7 +7,7 @@
 import React from 'react';
 import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
-import { StyleProvider } from 'native-base';
+import { StyleProvider, Root } from 'native-base';
 import getTheme from './native-base-theme/components';
 import customTheme from './native-base-theme/variables/customTheme';
 import { configureStore } from './src/utils';
@@ -22,9 +22,10 @@ const MainApp = () => {
   return (
     <Provider store={store}>
       <StyleProvider style={getTheme(customTheme)}>
-        <App />
+        <Root>
+          <App />
+        </Root>
       </StyleProvider>
-
     </Provider>
   );
 };

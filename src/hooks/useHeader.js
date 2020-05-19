@@ -8,13 +8,9 @@ const useHeader = () => {
     goBack();
   }, []);
 
-  const pressSearch = useCallback(() => {
-    console.log('pressSearch');
-  }, []);
+  const pressSearch = useCallback(() => {}, []);
 
-  const pressCart = useCallback(() => {
-    console.log('pressCart');
-  }, []);
+  const pressCart = useCallback(() => {}, []);
 
   const pressMenu = useCallback(() => {
     dispatch(DrawerActions.openDrawer());

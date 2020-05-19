@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
+import PropTypes from 'prop-types';
 import { List, H1 } from 'native-base';
-import { useNavigation } from '@react-navigation/native';
 import {
   ProfileStackScreen,
   WishListStackScreen,
@@ -64,5 +64,11 @@ const Menu = ({ navigation }) => {
       </List>
     </>
   );
+};
+
+Menu.propTypes = {
+  navigation: PropTypes.shape({
+    navigate: PropTypes.func.isRequired,
+  }).isRequired,
 };
 export default Menu;

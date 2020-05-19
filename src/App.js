@@ -13,6 +13,7 @@ import {
   CallScreen,
   ShareScreen,
   SearchScreen,
+  ProductListScreen,
 } from './screens';
 import { HeaderBarContainer, MenuContainer } from './containers';
 import {
@@ -26,6 +27,7 @@ import {
   CallStackScreen,
   ShareStackScreen,
   SearchStackScreen,
+  ProductListStackScreen,
 } from './constants/screens';
 
 const Drawer = createDrawerNavigator();
@@ -40,7 +42,11 @@ const Main = () => {
       }}
     >
       <Stack.Screen
-        options={{ title: 'Awesome app', menuVisible: true }}
+        options={{
+          title: 'Ecommerce Store',
+          searchVisible: false,
+          menuVisible: true,
+        }}
         name={HomeStackScreen}
         component={HomeScreen}
       />
@@ -92,6 +98,11 @@ const Main = () => {
         options={{ title: 'Search', searchVisible: false, cartVisible: false }}
         name={SearchStackScreen}
         component={SearchScreen}
+      />
+      <Stack.Screen
+        options={{ searchVisible: false, cartVisible: false }}
+        name={ProductListStackScreen}
+        component={ProductListScreen}
       />
     </Stack.Navigator>
   );

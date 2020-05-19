@@ -8,3 +8,4 @@ export { default as EmailScreen } from './EmailScreen';
 export { default as CallScreen } from './CallScreen';
 export { default as ShareScreen } from './ShareScreen';
 export { default as SearchScreen } from './SearchScreen';
+export { default as ProductListScreen } from './ProductListScreen';
