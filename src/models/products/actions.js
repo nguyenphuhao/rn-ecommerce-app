@@ -2,30 +2,31 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCTS_SUCCESS,
   FETCH_PRODUCTS_FAILED,
-  FETCH_PRODUCT_DETAIL,
-  FETCH_PRODUCT_DETAIL_SUCCESS,
-  FETCH_PRODUCT_DETAIL_FAILED,
+  FETCH_PRODUCTS_BY_CATEGORIES,
+  FETCH_PRODUCTS_BY_CATEGORIES_APPEND,
+  FETCH_PRODUCTS_BY_CATEGORIES_SUCCESS,
+  FETCH_PRODUCTS_BY_CATEGORIES_FAILED,
 } from '../../constants';
 
-export const fetchProducts = (vmuuid) => {
+export const fetchProductList = (categoryId) => {
   return {
     type: FETCH_PRODUCTS,
     payload: {
-      vmuuid,
+      categoryId,
     },
   };
 };
 
-export const fetchProductsSuccess = (products) => {
+export const fetchProductListSuccess = (productList) => {
   return {
     type: FETCH_PRODUCTS_SUCCESS,
     payload: {
-      products,
+      productList,
     },
   };
 };
 
-export const fetchProductsFailed = (error) => {
+export const fetchProductListFailed = (error) => {
   return {
     type: FETCH_PRODUCTS_FAILED,
     payload: {
@@ -34,27 +35,33 @@ export const fetchProductsFailed = (error) => {
   };
 };
 
-export const fetchProductDetail = (id) => {
+export const fetchProductListByCates = (categories) => {
   return {
-    type: FETCH_PRODUCT_DETAIL,
+    type: FETCH_PRODUCTS_BY_CATEGORIES,
     payload: {
-      productId: id,
+      categories,
     },
   };
 };
 
-export const fetchProductDetailSuccess = (productDetail) => {
+export const fetchProductListByCatesAppend = (product) => {
   return {
-    type: FETCH_PRODUCT_DETAIL_SUCCESS,
+    type: FETCH_PRODUCTS_BY_CATEGORIES_APPEND,
     payload: {
-      productDetail,
+      product,
     },
   };
 };
 
-export const fetchProductDetailFailed = (error) => {
+export const fetchProductListByCatesSuccess = () => {
   return {
-    type: FETCH_PRODUCT_DETAIL_FAILED,
+    type: FETCH_PRODUCTS_BY_CATEGORIES_SUCCESS,
+  };
+};
+
+export const fetchProductListByCatesFailed = (error) => {
+  return {
+    type: FETCH_PRODUCTS_BY_CATEGORIES_FAILED,
     payload: {
       error,
     },

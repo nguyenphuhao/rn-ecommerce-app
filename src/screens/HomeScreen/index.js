@@ -1,10 +1,16 @@
 import React from 'react';
-import { Text, Container } from 'native-base';
+import { Container, Content } from 'native-base';
+import { SearchInputContainer, CategoryListContainer } from '../../containers';
+import ProductCardListContainer from '../../containers/ProductCardListContainer';
 
 const HomeScreen = () => {
   return (
     <Container>
-      <Text>HomeScreen</Text>
+      <Content>
+        <SearchInputContainer />
+        <CategoryListContainer />
+        <ProductCardListContainer />
+      </Content>
     </Container>
   );
 };

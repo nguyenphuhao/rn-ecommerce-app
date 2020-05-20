@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Header, Left, Button, Icon, Right, Body, Title } from 'native-base';
 
 const HeaderBar = ({
+  menuVisible,
   backVisible,
   searchVisible,
   cartVisible,
@@ -10,14 +11,19 @@ const HeaderBar = ({
   onPressBack,
   onPressSearch,
   onPressCart,
+  onPressMenu,
 }) => {
-  console.log(backVisible);
   return (
     <Header>
       <Left>
         {backVisible && (
           <Button transparent onPress={onPressBack}>
             <Icon name="ios-arrow-back" />
+          </Button>
+        )}
+        {menuVisible && (
+          <Button transparent onPress={onPressMenu}>
+            <Icon name="ios-menu" />
           </Button>
         )}
       </Left>
@@ -44,6 +50,7 @@ HeaderBar.defaultProps = {
   onPressBack: () => {},
   onPressSearch: () => {},
   onPressCart: () => {},
+  onPressMenu: () => {},
 };
 
 HeaderBar.propTypes = {
@@ -51,8 +58,10 @@ HeaderBar.propTypes = {
   backVisible: PropTypes.bool.isRequired,
   searchVisible: PropTypes.bool.isRequired,
   cartVisible: PropTypes.bool.isRequired,
+  menuVisible: PropTypes.bool.isRequired,
   onPressBack: PropTypes.func,
   onPressSearch: PropTypes.func,
   onPressCart: PropTypes.func,
+  onPressMenu: PropTypes.func,
 };
 export default HeaderBar;

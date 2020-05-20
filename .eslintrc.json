@@ -1,4 +1,13 @@
 {
+  "env": {
+    "es6": true,
+    "node": true,
+    "browser": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module"
+  },
   "extends": ["airbnb", "prettier"],
   "plugins": ["prettier"],
   "rules": {
@@ -11,6 +20,7 @@
     "no-param-reassign": ["off"],
     "func-names": ["error", "always", { "generators": "as-needed" }],
     "import/no-unresolved": ["off"],
-    "default-case": ["off"]
+    "default-case": ["off"],
+    "react/jsx-props-no-spreadin": ["off"]
   }
 }

@@ -4,15 +4,23 @@ import HeaderBar from '../../components/HeaderBar';
 import { useHeader } from '../../hooks';
 
 const HeaderBarContainer = ({ scene }) => {
-  const { canGoBack, pressBack, pressSearch, pressCart } = useHeader();
+  const {
+    canGoBack,
+    pressBack,
+    pressSearch,
+    pressCart,
+    pressMenu,
+  } = useHeader();
   const {
     backVisible = true,
     searchVisible = true,
     cartVisible = true,
+    menuVisible = false,
     title = '',
   } = scene.descriptor.options;
   return (
     <HeaderBar
+      menuVisible={menuVisible}
       backVisible={backVisible && canGoBack}
       searchVisible={searchVisible}
       cartVisible={cartVisible}
@@ -20,6 +28,7 @@ const HeaderBarContainer = ({ scene }) => {
       onPressBack={pressBack}
       onPressSearch={pressSearch}
       onPressCart={pressCart}
+      onPressMenu={pressMenu}
     />
   );
 };
@@ -32,6 +41,7 @@ HeaderBarContainer.defaultProps = {
         backVisible: true,
         searchVisible: true,
         cartVisible: true,
+        menuVisible: false,
       },
     },
   },
@@ -45,6 +55,7 @@ HeaderBarContainer.propTypes = {
         backVisible: PropTypes.bool,
         searchVisible: PropTypes.bool,
         cartVisible: PropTypes.bool,
+        menuVisible: PropTypes.bool,
       }),
     }),
   }),
