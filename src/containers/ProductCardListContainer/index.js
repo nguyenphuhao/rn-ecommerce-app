@@ -1,20 +1,14 @@
-import React, { useEffect } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import { Spinner, Toast } from 'native-base';
-import ProductList from '../../components/ProductList';
-import useProductList from '../../hooks/useProductList';
+import ProductCardList from '../../components/ProductCardList';
+import useProductCardList from '../../hooks/useProductCardList';
 
-const ProductListContainer = ({ categoryId }) => {
+const ProductCardListContainer = () => {
   const {
-    fetch,
-    productList,
+    productListByCates,
     productListLoading,
     productListError,
-  } = useProductList();
-
-  useEffect(() => {
-    fetch(categoryId);
-  }, []);
+  } = useProductCardList();
 
   const showError = (error) => {
     if (error) {
@@ -37,14 +31,11 @@ const ProductListContainer = ({ categoryId }) => {
       ) : (
         <>
           {showError(productListError)}
-          <ProductList data={productList} />
+          {productListByCates && <ProductCardList data={productListByCates} />}
         </>
       )}
     </>
   );
 };
 
-ProductListContainer.propTypes = {
-  categoryId: PropTypes.string.isRequired,
-};
-export default ProductListContainer;
+export default ProductCardListContainer;

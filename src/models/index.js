@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 import { all } from 'redux-saga/effects';
-import categoryReducer from './categoryList/reducer';
+import categoryReducer from './categories/reducer';
 import productReducer from './products/reducer';
-import watchCategoryListSagas from './categoryList/sagas';
+import watchCategoryListSagas from './categories/sagas';
 import watchProductSagas from './products/sagas';
 
 export const rootReducer = combineReducers({

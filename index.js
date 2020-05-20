@@ -9,7 +9,7 @@ import { AppRegistry } from 'react-native';
 import { Provider } from 'react-redux';
 import { StyleProvider, Root } from 'native-base';
 import getTheme from './native-base-theme/components';
-import customTheme from './native-base-theme/variables/customTheme';
+import customTheme from './native-base-theme/variables/abanteTheme';
 import { configureStore } from './src/utils';
 import App from './src/App';
 import { name as appName } from './app.json';

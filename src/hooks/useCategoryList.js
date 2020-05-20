@@ -4,8 +4,8 @@ import {
   selectCategoryList,
   selectCategoryListLoading,
   selectCategoryListError,
-} from '../models/categoryList/selectors';
-import { fetchCategoryList } from '../models/categoryList/actions';
+} from '../models/categories/selectors';
+import { fetchCategoryList } from '../models/categories/actions';
 
 const useCategoryList = () => {
   const dispatch = useDispatch();

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Content } from 'native-base';
 import { SearchInputContainer, CategoryListContainer } from '../../containers';
+import ProductCardListContainer from '../../containers/ProductCardListContainer';
 
 const HomeScreen = () => {
   return (
@@ -8,6 +9,7 @@ const HomeScreen = () => {
       <Content>
         <SearchInputContainer />
         <CategoryListContainer />
+        <ProductCardListContainer />
       </Content>
     </Container>
   );

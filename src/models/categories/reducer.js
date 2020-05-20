@@ -8,7 +8,7 @@ import {
 const initialState = {
   categoryList: [],
   error: null,
-  isLoading: true,
+  isLoading: false,
 };
 const categoryReducer = (state = initialState, { type, payload }) => {
   return produce(state, (draft) => {

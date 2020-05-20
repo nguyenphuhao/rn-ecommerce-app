@@ -22,7 +22,7 @@ const CategoryList = ({ data, onSelectItem }) => {
           </TouchableOpacity>
         );
       }}
-      keyExtractor={(item) => item.category_id}
+      keyExtractor={(item) => item.id}
       ListEmptyComponent={<Text>No category found.</Text>}
     />
   );

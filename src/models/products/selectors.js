@@ -1,9 +1,12 @@
 import { createSelector } from 'reselect';
-import { mapProductList } from './helpers';
+import { mapProductList, mapProductListByCates } from './helpers';
 
 const productListSelector = (state) => state.productReducer.productList;
 const productListLoadingSelector = (state) => state.productReducer.isLoading;
 const productListErrorSelector = (state) => state.productReducer.error;
+
+const productListByCatesSelector = (state) =>
+  state.productReducer.productListByCates;
 
 export const selectProductListError = createSelector(
   productListErrorSelector,
@@ -15,5 +18,10 @@ export const selectProductListLoading = createSelector(
 );
 export const selectProductList = createSelector(
   productListSelector,
-  (productList) => productList.map(mapProductList),
+  (productList) => (productList ? productList.map(mapProductList) : []),
+);
+export const selectProductListByCates = createSelector(
+  productListByCatesSelector,
+  (productListByCates) =>
+    productListByCates ? productListByCates.map(mapProductListByCates) : [],
 );
