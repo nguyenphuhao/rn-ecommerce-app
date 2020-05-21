@@ -28,7 +28,10 @@ import {
   ShareStackScreen,
   SearchStackScreen,
   ProductListStackScreen,
+  LoginStackScreen,
 } from './constants/screens';
+import LoginScreen from './screens/LoginScreen';
+import { useAuthentication } from './hooks';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -108,12 +111,36 @@ const Main = () => {
   );
 };
 
+const Authentication = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName={HomeStackScreen}
+      screenOptions={{
+        header: () => null,
+      }}
+    >
+      <Stack.Screen
+        options={{ searchVisible: false, cartVisible: false }}
+        name={LoginStackScreen}
+        component={LoginScreen}
+      />
+    </Stack.Navigator>
+  );
+};
+
 const App = () => {
+  const auth = useAuthentication();
   return (
     <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <MenuContainer {...props} />}>
-        <Drawer.Screen name={MainStackNavigator} component={Main} />
-      </Drawer.Navigator>
+      {auth.authToken ? (
+        <Drawer.Navigator
+          drawerContent={(props) => <MenuContainer {...props} />}
+        >
+          <Drawer.Screen name={MainStackNavigator} component={Main} />
+        </Drawer.Navigator>
+      ) : (
+        <Authentication />
+      )}
     </NavigationContainer>
   );
 };

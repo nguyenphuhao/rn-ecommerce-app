@@ -6,22 +6,22 @@ import {
 } from '../models/authentication/selectors';
 import { requestLogin } from '../models/authentication/actions';
 
-const useCategoryList = () => {
+const useAuthentication = () => {
   const dispatch = useDispatch();
   const authToken = useSelector(selectAuthToken);
   const authLoading = useSelector(selectAuthLoading);
-  const categoryListError = useSelector(selectAuthError);
+  const authError = useSelector(selectAuthError);
 
-  const login = () => {
-    dispatch(requestLogin());
+  const login = (username, password) => {
+    dispatch(requestLogin(username, password));
   };
 
   return {
     login,
     authToken,
     authLoading,
-    categoryListError,
+    authError,
   };
 };
 
-export default useCategoryList;
+export default useAuthentication;

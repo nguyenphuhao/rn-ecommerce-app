@@ -3,9 +3,10 @@ import { requestLogin } from './api';
 import { REQUEST_LOGIN } from '../../constants/actions';
 import { requestLoginSuccess, requestLoginFailed } from './actions';
 
-export const requestLoginTask = function* () {
+export const requestLoginTask = function* ({ payload }) {
   try {
-    const { status, data } = yield call(requestLogin);
+    const { username, password } = payload;
+    const { status, data } = yield call(requestLogin, username, password);
     if (status !== 200) {
       const error = {
         errorCode: status,

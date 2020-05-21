@@ -11,3 +11,4 @@ export const baseFontColor = '#fff';
 export const highlightColor = '#148cbf';
 export const baseFontSize = 19;
 export const smallFontSize = 17;
+export const blurColor = '#ffffff25';

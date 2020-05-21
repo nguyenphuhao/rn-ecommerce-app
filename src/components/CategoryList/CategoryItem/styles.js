@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native';
+import { baseBorderColor } from '../../../constants/styles';
 
 export default StyleSheet.create({
   cateItem: {
@@ -11,7 +12,7 @@ export default StyleSheet.create({
     width: 60,
     height: 60,
     borderWidth: 1,
-    borderColor: '#000',
+    borderColor: baseBorderColor,
     borderRadius: 100,
   },
   cateName: {
