@@ -3,6 +3,7 @@ import {
   REQUEST_LOGIN,
   REQUEST_LOGIN_SUCCESS,
   REQUEST_LOGIN_FAILED,
+  REFRESH_TOKEN,
 } from '../../constants';
 
 const initialState = {
@@ -14,6 +15,9 @@ const loginReducer = (state = initialState, { type, payload }) => {
   return produce(state, (draft) => {
     switch (type) {
       case REQUEST_LOGIN:
+        draft.isLoading = true;
+        break;
+      case REFRESH_TOKEN:
         draft.isLoading = true;
         break;
       case REQUEST_LOGIN_SUCCESS:
