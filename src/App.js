@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Spinner } from 'native-base';
 import {
   HomeScreen,
   ProfileScreen,
@@ -129,19 +130,24 @@ const Authentication = () => {
 };
 
 const App = () => {
-  const auth = useAuthentication();
+  const { authorized, authToken } = useAuthentication();
+  useEffect(() => {
+    authorized();
+  }, []);
   return (
-    <NavigationContainer>
-      {auth.authToken ? (
-        <Drawer.Navigator
-          drawerContent={(props) => <MenuContainer {...props} />}
-        >
-          <Drawer.Screen name={MainStackNavigator} component={Main} />
-        </Drawer.Navigator>
-      ) : (
-        <Authentication />
-      )}
-    </NavigationContainer>
+    <>
+      <NavigationContainer>
+        {authToken ? (
+          <Drawer.Navigator
+            drawerContent={(props) => <MenuContainer {...props} />}
+          >
+            <Drawer.Screen name={MainStackNavigator} component={Main} />
+          </Drawer.Navigator>
+        ) : (
+          <Authentication />
+        )}
+      </NavigationContainer>
+    </>
   );
 };
 

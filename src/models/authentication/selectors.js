@@ -1,6 +1,7 @@
 import { createSelector } from 'reselect';
 
 const authTokenSelector = (state) => state.loginReducer.token;
+const hasAuthorizedSelector = (state) => state.loginReducer.hasAuthorized;
 const authLoadingSelector = (state) => state.loginReducer.isLoading;
 const authErrorSelector = (state) => state.loginReducer.error;
 
@@ -15,4 +16,8 @@ export const selectAuthLoading = createSelector(
 export const selectAuthToken = createSelector(
   authTokenSelector,
   (token) => token,
+);
+export const selectHasAuthorized = createSelector(
+  hasAuthorizedSelector,
+  (hasAuthorized) => hasAuthorized,
 );

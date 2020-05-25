@@ -1,7 +1,12 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
-import { requestLogin } from './api';
-import { REQUEST_LOGIN, REFRESH_TOKEN } from '../../constants/actions';
-import { requestLoginSuccess, requestLoginFailed } from './actions';
+import { takeLatest, put, call } from 'redux-saga/effects';
+import { requestLogin, authorized } from './api';
+import { REQUEST_LOGIN, CHECK_AUTHORIZED } from '../../constants/actions';
+import {
+  requestLoginSuccess,
+  requestLoginFailed,
+  checkAuthorizedSuccess,
+  checkAuthorizedFailed,
+} from './actions';
 
 export const requestLoginTask = function* ({ payload }) {
   try {
@@ -25,21 +30,15 @@ export const requestLoginTask = function* ({ payload }) {
   }
 };
 
-export const refreshTokenTask = function* ({ payload }) {
+export const checkAuthorized = function* ({ payload }) {
   try {
     const { token } = payload;
-    const { status, data } = yield call(requestLogin, username, password);
-    if (status !== 200) {
-      const error = {
-        errorCode: status,
-        errorMsg: data.Error,
-      };
-      return yield put(requestLoginFailed(error));
-    }
-    return yield put(requestLoginSuccess(data.token));
+    const { status } = yield call(authorized, token);
+    const isValid = status === 200;
+    return yield put(checkAuthorizedSuccess(isValid ? token : null));
   } catch (error) {
     return yield put(
-      requestLoginFailed({
+      checkAuthorizedFailed({
         errorCode: 500,
         errorMsg: error.message,
       }),
@@ -48,8 +47,8 @@ export const refreshTokenTask = function* ({ payload }) {
 };
 
 const watchLoginSagas = function* () {
-  yield takeEvery(REQUEST_LOGIN, requestLoginTask);
-  yield takeEvery(REFRESH_TOKEN, refreshTokenTask);
+  yield takeLatest(REQUEST_LOGIN, requestLoginTask);
+  yield takeLatest(CHECK_AUTHORIZED, checkAuthorized);
 };
 
 export default watchLoginSagas;

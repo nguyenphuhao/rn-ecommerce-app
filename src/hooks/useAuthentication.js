@@ -8,7 +8,7 @@ import {
 } from '../models/authentication/selectors';
 import {
   requestLogin,
-  requestLoginSuccess,
+  checkAuthorized,
 } from '../models/authentication/actions';
 import { AUTH_TOKEN } from '../constants';
 
@@ -22,16 +22,13 @@ const useAuthentication = () => {
     dispatch(requestLogin(username, password));
   };
 
-  useEffect(() => {
-    const syncAuthToken = async () => {
-      const asyncAuthToken = await AsyncStorage.getItem(AUTH_TOKEN);
-      console.log('asyncAuthToken', asyncAuthToken);
-      if (asyncAuthToken) {
-        dispatch(requestLoginSuccess(asyncAuthToken));
+  const authorized = () => {
+    AsyncStorage.getItem(AUTH_TOKEN).then((token) => {
+      if (token) {
+        dispatch(checkAuthorized(token));
       }
-    };
-    syncAuthToken();
-  }, []);
+    });
+  };
 
   useEffect(() => {
     if (authToken) {
@@ -41,6 +38,7 @@ const useAuthentication = () => {
 
   return {
     login,
+    authorized,
     authToken,
     authLoading,
     authError,
