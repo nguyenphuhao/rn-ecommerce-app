@@ -8,7 +8,7 @@ import {
   ProfileScreen,
   WishListScreen,
   CartScreen,
-  OrderScreen,
+  OrderListScreen,
   EmailScreen,
   CallScreen,
   ShareScreen,
@@ -83,7 +83,7 @@ const Main = () => {
       <Stack.Screen
         options={{ title: 'My Order', searchVisible: false, cartVisible: true }}
         name={OrdersStackScreen}
-        component={OrderScreen}
+        component={OrderListScreen}
       />
       <Stack.Screen
         options={{ title: 'Email', searchVisible: false, cartVisible: false }}
