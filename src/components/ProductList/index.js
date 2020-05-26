@@ -1,17 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { FlatList, Text } from 'react-native';
-import ProductItem from './ProductItem';
 import styles from './styles';
 
-const ProductList = ({ data }) => {
+const ProductList = ({ data, renderItem }) => {
   return (
     <FlatList
       style={styles.container}
       data={data}
-      renderItem={({ item }) => {
-        return <ProductItem item={item} />;
-      }}
+      renderItem={renderItem}
       keyExtractor={(item) => item.id}
       ListEmptyComponent={<Text>No product found.</Text>}
     />
@@ -27,5 +24,6 @@ ProductList.propTypes = {
       price: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  renderItem: PropTypes.func.isRequired,
 };
 export default ProductList;

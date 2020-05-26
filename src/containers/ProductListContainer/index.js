@@ -1,8 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { Spinner, Toast } from 'native-base';
+import customToast from 'react-native-custom-toast';
 import ProductList from '../../components/ProductList';
 import useProductList from '../../hooks/useProductList';
+import ProductItem from '../../components/ProductList/ProductItem';
+import useCheckOut from '../../hooks/useCheckOut';
 
 const ProductListContainer = ({ categoryId }) => {
   const {
@@ -12,6 +15,7 @@ const ProductListContainer = ({ categoryId }) => {
     productListError,
   } = useProductList();
 
+  const { addToCart } = useCheckOut();
   useEffect(() => {
     fetch(categoryId);
   }, []);
@@ -30,6 +34,11 @@ const ProductListContainer = ({ categoryId }) => {
     }
   };
 
+  const handleAddToCart = useCallback((productId) => {
+    addToCart(productId);
+    customToast.show('Product added to your wish list', 3000);
+  }, []);
+
   return (
     <>
       {productListLoading ? (
@@ -37,7 +46,12 @@ const ProductListContainer = ({ categoryId }) => {
       ) : (
         <>
           {showError(productListError)}
-          <ProductList data={productList} />
+          <ProductList
+            data={productList}
+            renderItem={({ item }) => {
+              return <ProductItem item={item} onAddToCart={handleAddToCart} />;
+            }}
+          />
         </>
       )}
     </>

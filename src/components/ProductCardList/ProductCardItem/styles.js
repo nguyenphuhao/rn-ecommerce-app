@@ -14,8 +14,10 @@ export default StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 5,
     padding: 10,
+    paddingBottom: 30,
     marginHorizontal: 10,
     marginVertical: 5,
+    position: 'relative',
   },
   img: {
     alignSelf: 'center',
@@ -32,5 +34,13 @@ export default StyleSheet.create({
   },
   priceText: {
     fontWeight: 'bold',
+  },
+  addCart: {
+    width: '40%',
+    alignSelf: 'flex-end',
+    marginRight: 10,
+    position: 'absolute',
+    bottom: 10,
+    right: 5,
   },
 });

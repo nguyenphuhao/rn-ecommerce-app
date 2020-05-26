@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
 import { View } from 'react-native';
 import { Button, Text } from 'native-base';
@@ -7,9 +7,9 @@ import ProductCardItem from './ProductCardItem';
 import styles from './styles';
 import { ProductListStackScreen } from '../../constants';
 
-const ProductCardList = ({ data }) => {
+const ProductCardList = ({ data, onAddToCart }) => {
   const { navigate } = useNavigation();
-
+  const handleAddToCart = useCallback(onAddToCart, [onAddToCart]);
   return (
     <View style={styles.container}>
       {data.map((item) => {
@@ -34,6 +34,7 @@ const ProductCardList = ({ data }) => {
                     <ProductCardItem
                       key={`item-${product.id}`}
                       item={product}
+                      onAddToCart={handleAddToCart}
                     />
                   );
                 })}
@@ -54,5 +55,6 @@ ProductCardList.propTypes = {
       price: PropTypes.string.isRequired,
     }).isRequired,
   ).isRequired,
+  onAddToCart: PropTypes.func.isRequired,
 };
 export default ProductCardList;
