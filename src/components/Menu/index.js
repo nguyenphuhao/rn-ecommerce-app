@@ -14,12 +14,14 @@ import {
 import MenuItem from './MenuItem';
 import MenuHeaderItem from './MenuHeaderItem';
 import styles from './styles';
+import Logo from '../Logo';
 
 const Menu = ({ navigation }) => {
   const { navigate } = navigation;
   return (
     <>
       <H1 style={styles.headerText}>Ecommerce Store</H1>
+      <Logo />
       <List>
         <MenuHeaderItem text="My Account" />
         <MenuItem

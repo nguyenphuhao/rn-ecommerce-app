@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import { Spinner } from 'native-base';
 import {
   HomeScreen,
   ProfileScreen,
@@ -14,6 +15,7 @@ import {
   ShareScreen,
   SearchScreen,
   ProductListScreen,
+  SplashScreen,
 } from './screens';
 import { HeaderBarContainer, MenuContainer } from './containers';
 import {
@@ -28,7 +30,11 @@ import {
   ShareStackScreen,
   SearchStackScreen,
   ProductListStackScreen,
+  LoginStackScreen,
+  SplashStackScreen,
 } from './constants/screens';
+import LoginScreen from './screens/LoginScreen';
+import { useAuthentication } from './hooks';
 
 const Drawer = createDrawerNavigator();
 const Stack = createStackNavigator();
@@ -108,13 +114,60 @@ const Main = () => {
   );
 };
 
-const App = () => {
+const Authentication = () => {
   return (
-    <NavigationContainer>
-      <Drawer.Navigator drawerContent={(props) => <MenuContainer {...props} />}>
-        <Drawer.Screen name={MainStackNavigator} component={Main} />
-      </Drawer.Navigator>
-    </NavigationContainer>
+    <Stack.Navigator
+      initialRouteName={HomeStackScreen}
+      screenOptions={{
+        header: () => null,
+      }}
+    >
+      <Stack.Screen
+        options={{ searchVisible: false, cartVisible: false }}
+        name={LoginStackScreen}
+        component={LoginScreen}
+      />
+    </Stack.Navigator>
+  );
+};
+
+const App = () => {
+  const { authorized, authToken, authLoading } = useAuthentication();
+  useEffect(() => {
+    authorized();
+  }, []);
+  return (
+    <>
+      <NavigationContainer>
+        {authToken ? (
+          <Drawer.Navigator
+            drawerContent={(props) => <MenuContainer {...props} />}
+          >
+            <Drawer.Screen name={MainStackNavigator} component={Main} />
+          </Drawer.Navigator>
+        ) : (
+          <Stack.Navigator
+            screenOptions={{
+              header: () => null,
+            }}
+          >
+            {authLoading ? (
+              <Stack.Screen
+                options={{ searchVisible: false, cartVisible: false }}
+                name={SplashStackScreen}
+                component={SplashScreen}
+              />
+            ) : (
+              <Stack.Screen
+                options={{ searchVisible: false, cartVisible: false }}
+                name={LoginStackScreen}
+                component={LoginScreen}
+              />
+            )}
+          </Stack.Navigator>
+        )}
+      </NavigationContainer>
+    </>
   );
 };
 
