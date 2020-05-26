@@ -12,7 +12,7 @@ const initialState = {
   token: null,
   hasAuthorized: false,
   error: null,
-  isLoading: true,
+  isLoading: false,
 };
 const loginReducer = (state = initialState, { type, payload }) => {
   return produce(state, (draft) => {

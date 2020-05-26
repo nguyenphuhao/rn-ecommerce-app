@@ -1,14 +1,10 @@
 import React from 'react';
-import { Text } from 'react-native';
-import { Button } from 'native-base';
+import { Spinner } from 'native-base';
 
 const Splash = () => {
   return (
     <>
-      <Text>HELLOWORLD</Text>
-      <Button>
-        <Text>Click Me!</Text>
-      </Button>
+      <Spinner />
     </>
   );
 };

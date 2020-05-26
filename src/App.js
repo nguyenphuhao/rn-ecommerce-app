@@ -15,6 +15,7 @@ import {
   ShareScreen,
   SearchScreen,
   ProductListScreen,
+  SplashScreen,
 } from './screens';
 import { HeaderBarContainer, MenuContainer } from './containers';
 import {
@@ -30,6 +31,7 @@ import {
   SearchStackScreen,
   ProductListStackScreen,
   LoginStackScreen,
+  SplashStackScreen,
 } from './constants/screens';
 import LoginScreen from './screens/LoginScreen';
 import { useAuthentication } from './hooks';
@@ -130,7 +132,7 @@ const Authentication = () => {
 };
 
 const App = () => {
-  const { authorized, authToken } = useAuthentication();
+  const { authorized, authToken, authLoading } = useAuthentication();
   useEffect(() => {
     authorized();
   }, []);
@@ -144,7 +146,25 @@ const App = () => {
             <Drawer.Screen name={MainStackNavigator} component={Main} />
           </Drawer.Navigator>
         ) : (
-          <Authentication />
+          <Stack.Navigator
+            screenOptions={{
+              header: () => null,
+            }}
+          >
+            {authLoading ? (
+              <Stack.Screen
+                options={{ searchVisible: false, cartVisible: false }}
+                name={SplashStackScreen}
+                component={SplashScreen}
+              />
+            ) : (
+              <Stack.Screen
+                options={{ searchVisible: false, cartVisible: false }}
+                name={LoginStackScreen}
+                component={LoginScreen}
+              />
+            )}
+          </Stack.Navigator>
         )}
       </NavigationContainer>
     </>

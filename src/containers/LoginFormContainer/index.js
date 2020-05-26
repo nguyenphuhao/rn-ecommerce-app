@@ -1,8 +1,7 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import LoginForm from '../../components/LoginForm';
 import { useAuthentication, useToast } from '../../hooks';
-import { HomeStackScreen } from '../../constants';
 
 const LoginFormContainer = () => {
   const { navigate } = useNavigation();
