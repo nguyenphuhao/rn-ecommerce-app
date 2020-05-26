@@ -4,3 +4,4 @@ export { default as MenuContainer } from './MenuContainer';
 export { default as SearchInputContainer } from './SearchInputContainer';
 export { default as CategoryListContainer } from './CategoryListContainer';
 export { default as ProductListContainer } from './ProductListContainer';
+export { default as OrderListContainer } from './OrderListContainer';
