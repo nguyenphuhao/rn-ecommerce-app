@@ -1,6 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
-import React from 'react';
+import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
+import Share from 'react-native-share';
 import { List, H1 } from 'native-base';
 import {
   ProfileStackScreen,
@@ -9,7 +10,6 @@ import {
   OrdersStackScreen,
   EmailStackScreen,
   CallStackScreen,
-  ShareStackScreen,
 } from '../../constants/screens';
 import MenuItem from './MenuItem';
 import MenuHeaderItem from './MenuHeaderItem';
@@ -18,6 +18,15 @@ import Logo from '../Logo';
 
 const Menu = ({ navigation }) => {
   const { navigate } = navigation;
+  const shareOptions = {
+    title: 'Share via',
+    message: 'Abante Shoping',
+    social: 'facebook',
+    url: 'http://nguyenphuhao.com/abante',
+  };
+  const openShare = useCallback(() => {
+    Share.shareSingle(shareOptions);
+  }, []);
   return (
     <>
       <H1 style={styles.headerText}>Ecommerce Store</H1>
@@ -58,11 +67,7 @@ const Menu = ({ navigation }) => {
           onPress={() => navigate(CallStackScreen)}
         />
         <MenuHeaderItem text="Others" />
-        <MenuItem
-          name="md-share"
-          text="Share"
-          onPress={() => navigate(ShareStackScreen)}
-        />
+        <MenuItem name="md-share" text="Share" onPress={openShare} />
       </List>
     </>
   );
