@@ -79,6 +79,8 @@ target 'RNShopApp' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
+  pod 'react-native-custom-toast', :path => '../node_modules/react-native-custom-toast'
+
   target 'RNShopAppTests' do
     inherit! :complete
     # Pods for testing
