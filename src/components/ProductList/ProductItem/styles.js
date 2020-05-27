@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { baseBorderColor } from '../../../constants/styles';
+import { baseBorderColor, baseFontColor } from '../../../constants/styles';
 
 export default StyleSheet.create({
   container: {
@@ -31,6 +31,13 @@ export default StyleSheet.create({
   currentPrice: {
     fontWeight: 'bold',
   },
-  oldPrice: {},
-  discount: {},
+  addCart: {
+    width: '30%',
+    alignSelf: 'flex-end',
+    marginRight: 10,
+  },
+  addCartText: {
+    color: baseFontColor,
+    textAlign: 'center',
+  },
 });

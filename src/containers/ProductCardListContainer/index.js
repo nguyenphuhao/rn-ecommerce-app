@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Spinner, Toast } from 'native-base';
+import customToast from 'react-native-custom-toast';
 import ProductCardList from '../../components/ProductCardList';
 import useProductCardList from '../../hooks/useProductCardList';
+import useCheckOut from '../../hooks/useCheckOut';
 
 const ProductCardListContainer = () => {
   const {
@@ -9,6 +11,7 @@ const ProductCardListContainer = () => {
     productListLoading,
     productListError,
   } = useProductCardList();
+  const { addToCart } = useCheckOut();
 
   const showError = (error) => {
     if (error) {
@@ -24,6 +27,10 @@ const ProductCardListContainer = () => {
     }
   };
 
+  const handleAddToCart = useCallback((productId) => {
+    addToCart(productId);
+    customToast.show('Product added to your wish list', 3000);
+  }, []);
   return (
     <>
       {productListLoading ? (
@@ -31,7 +38,12 @@ const ProductCardListContainer = () => {
       ) : (
         <>
           {showError(productListError)}
-          {productListByCates && <ProductCardList data={productListByCates} />}
+          {productListByCates && (
+            <ProductCardList
+              onAddToCart={handleAddToCart}
+              data={productListByCates}
+            />
+          )}
         </>
       )}
     </>
