@@ -1,4 +1,5 @@
 import { takeEvery, put, call, select } from 'redux-saga/effects';
+import PushNotification from 'react-native-push-notification';
 import { addCart } from './api';
 import { REQUEST_CHECKOUT } from '../../constants/actions';
 import { requestCheckOutSuccess, requestCheckOutFailed } from './actions';
@@ -15,7 +16,12 @@ export const requestCheckOutTask = function* ({ payload }) {
       };
       return yield put(requestCheckOutFailed(error));
     }
-
+    PushNotification.localNotification({
+      message: 'Product added succesfully', // (required)
+      title: 'Ecommerce Store',
+      smallIcon: 'abante_logo',
+      largeIcon: 'abante_logo',
+    });
     return yield put(requestCheckOutSuccess(data));
   } catch (error) {
     return yield put(
