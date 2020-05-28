@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "220348001295",
+    "firebase_url": "https://quickstart-1563453585158.firebaseio.com",
+    "project_id": "quickstart-1563453585158",
+    "storage_bucket": "quickstart-1563453585158.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:220348001295:android:0f478bc02d983bb068477a",
+        "android_client_info": {
+          "package_name": "com.rnshopapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "220348001295-7bi1r4ogtau8r2ufhb0fl9f9i1f15mf4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.rnshopapp",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "220348001295-blqhhpbmrok9006k3sokkdm79nro940j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsnjCWsoKdp1PEw-d_oUurzYsrH03ShwE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "220348001295-blqhhpbmrok9006k3sokkdm79nro940j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import PushNotification from 'react-native-push-notification';
 import {
   HomeScreen,
   ProfileScreen,
@@ -116,7 +117,14 @@ const Main = () => {
 
 const App = () => {
   const { authorized, authToken, authLoading } = useAuthentication();
+  const configureNotification = () => {
+    PushNotification.configure({
+      popInitialNotification: true,
+      requestPermissions: true,
+    });
+  };
   useEffect(() => {
+    configureNotification();
     authorized();
   }, []);
   return (
