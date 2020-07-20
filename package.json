@@ -21,7 +21,7 @@
     "appcenter-crashes": "3.0.2",
     "axios": "^0.19.2",
     "immer": "^6.0.5",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
     "react": "16.11.0",
