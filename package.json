@@ -19,7 +19,7 @@
     "appcenter": "3.0.2",
     "appcenter-analytics": "3.0.2",
     "appcenter-crashes": "3.0.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "immer": "^6.0.5",
     "lodash": "^4.17.15",
     "native-base": "^2.13.12",
