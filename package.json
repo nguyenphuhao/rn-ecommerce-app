@@ -20,7 +20,7 @@
     "appcenter-analytics": "3.0.2",
     "appcenter-crashes": "3.0.2",
     "axios": "^0.19.2",
-    "immer": "^6.0.5",
+    "immer": "^8.0.1",
     "lodash": "^4.17.15",
     "native-base": "^2.13.12",
     "prop-types": "^15.7.2",
